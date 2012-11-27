@@ -5,7 +5,8 @@ Cf-factory is a Ruby library to generate CloudFormation templates.
 
 Disclaimer: This is a personal project. No relation whatsoever exists between this project and my employer.
 
-** Example Code:
+**Example Code:
+    
     require 'help/include_libraries'
 
     ####### input parameters
