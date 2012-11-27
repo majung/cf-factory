@@ -5,8 +5,8 @@ Cf-factory is a Ruby library to generate CloudFormation templates.
 
 Disclaimer: This is a personal project. No relation whatsoever exists between this project and my employer.
 
-**Example Code:
-    
+**Example Code:**
+    ###### this script generates a CloudFormation template with 
     require 'help/include_libraries'
 
     ####### input parameters
@@ -46,8 +46,10 @@ Disclaimer: This is a personal project. No relation whatsoever exists between th
     cf.add_output(output)
     
     ####### validate and instantiate stack
-    puts cf.generate
+    cf_json = cf.generate 
+    puts cf_json
     config_options = YAML.load_file("aws_config.yml")
     validator = TemplateValidation.new(cf_json, config_options)
     validator.validate({"KeyName" => 'my-key'})
 
+More examples can be found in the src/examples folder.
