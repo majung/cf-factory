@@ -7,7 +7,7 @@ Disclaimer: This is a personal project. No relation whatsoever exists between th
 
 **Example Code:**
     
-    ###### this script generates a CloudFormation template with 
+    ###### this script generates a CloudFormation template that instantiates a VPC with IGW, 3 subnets and a network ACL  
     require 'help/include_libraries'
 
     ####### input parameters
