@@ -16,3 +16,7 @@ tmp
 .yardoc
 _yardoc
 doc/
+*.yml
+.project
+.buildpath
+todo.txt
