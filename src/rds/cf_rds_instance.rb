@@ -2,6 +2,7 @@ require 'base/cf_base'
 require 'base/cf_helper'
 
 class CfRdsInstance
+  VALID_TYPES = ["db.t1.micro", "db.m1.small","db.m1.medium","db.m1.large","db.m1.xlarge","db.m2.xlarge","db.m2.2xlarge","db.m2.4xlarge"]
   include CfBase
   
   def initialize(name, allocated_storage, engine, db_instance_class, master_username, master_userpassword, options = {})
@@ -14,6 +15,7 @@ class CfRdsInstance
     @multi_az = options[:multi_az]
     @security_groups = options[:security_groups]
     @subnet_group = options[:subnet_group]
+    validate()
   end
   
   def get_cf_type
@@ -38,6 +40,14 @@ class CfRdsInstance
   
   def add_rule(ingress_rule)
     @rules << ingress_rule
+  end
+  
+  private
+  
+  def validate
+    if !VALID_TYPES.include?(@db_instance_class)
+      raise Exception.new("invalid type '#{@db_instance_class}' - supported classes are #{@VALID_TYPES.inspect}")
+    end
   end
   
 end

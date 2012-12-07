@@ -15,6 +15,7 @@ class CfEc2Instance
     @security_groups = options[:security_groups]      
     @source_dest_check = options[:source_dest_check]
     @user_data = options[:user_data]
+    @availability_zone = options[:availability_zone]
     validate()
   end
   
@@ -36,6 +37,7 @@ class CfEc2Instance
     result["SecurityGroups"] = CfHelper.generate_ref_array(@security_groups) unless @security_groups.nil?      
     result["SourceDestCheck"] = @source_dest_check unless @source_dest_check.nil?
     result["UserData"] = CfHelper.base64(@user_data) unless @user_data.nil? 
+    result["AvailabilityZone"] = @availability_zone unless @availability_zone.nil?
     result
   end
   

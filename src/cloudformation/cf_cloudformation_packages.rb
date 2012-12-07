@@ -19,7 +19,7 @@ class CfCloudFormationPackages
     result = {}    
     sort_packages_by_type()
     @packages_by_type.keys.each() {|package_type|
-      result["#{package_type}"] = "{\n#{CfHelper.generate_inner_list(@packages_by_type[package_type])}\n}"
+      result["#{package_type}"] = "{\n#{CfHelper.generate_inner_list(@packages_by_type[package_type])}\n#{" "*(@additional_indent+10)}}"
     }
     result
   end

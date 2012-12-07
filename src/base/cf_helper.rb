@@ -42,7 +42,7 @@ class CfHelper
   end
   
   def self.join(array)
-    "{ \"Fn::Join\" : [ \"\", #{array.inspect} ]}"
+    "{ \"Fn::Join\" : [ \"\", #{print_array(array)} ]}"
   end
   
   def self.clean(string)
@@ -55,6 +55,22 @@ class CfHelper
 
   def self.ref_current_region()
     '{ "Ref" : "AWS::Region" }'
+  end
+  
+  def self.az_in_region(az_id = "a", region = "")
+    join([ref_current_region(), 'a'])
+  end
+  
+  def self.print_array(array)
+    inner = ""
+    array.each() {|element|
+      inner += "\"#{element}\" ,"
+    }
+    inner.chomp!(",")
+    result = "[ #{inner} ]"
+    #result = array.inspect
+    #puts "rsult = #{result.inspect}"    
+    clean(result)
   end
   
 end

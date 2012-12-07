@@ -13,6 +13,7 @@ class CfDistributionConfig
     @enabled = enabled
     
     @aliases = options[:aliases] 
+    @logging = options[:logging]
   end
   
   def get_cf_attributes
@@ -20,6 +21,8 @@ class CfDistributionConfig
     result["Origins"] = CfHelper.generate_inner_array(@origins)
     result["DefaultCacheBehavior"] = @default_cache_behaviour.generate
     result["Enabled"] = @enabled
+    result["Logging"] = @logging.generate
+    result["Aliases"] = @aliases.inspect unless @aliases.nil?
     result
   end
   
