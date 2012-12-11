@@ -39,7 +39,7 @@ class CfRoute53RecordSet
     result["TTL"] = @ttl unless @ttl.nil?
     result["Weight"] = @weight unless @weight.nil?
     result["SetIdentifier"] = @set_identifier unless @set_identifier.nil? 
-    result["ResourceRecords"] = @resource_records.inspect unless @resource_records.nil?
+    result["ResourceRecords"] = CfHelper.print_array(@resource_records) unless @resource_records.nil?
     result["AliasTarget"] = @alias_target.generate unless @alias_target.nil?
     result
   end

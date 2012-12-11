@@ -15,6 +15,16 @@ class CfOrigin
     @origin = origin
   end
   
+  def self.create_s3_origin(s3_bucket, options = {})
+    s3_origin_config = CfS3OriginConfig.new
+    CfOrigin.new(s3_bucket.short_domain_name(),s3_bucket.generate_ref,s3_origin_config, options)
+  end
+  
+  def self.create_elb_origin(elb, options = {})
+    custom_origin_config = CfCustomOriginConfig.new("http-only")
+    CfOrigin.new(elb.retrieve_attribute("DNSName"),elb.generate_ref,custom_origin_config, options)    
+  end
+  
   def get_cf_attributes
     result = {}
     result["DomainName"] = @domain_name

@@ -14,6 +14,7 @@ class CfAsLaunchConfig
     @security_groups = options[:security_groups]
     @spot_price = options[:spot_price]
     #TODO: a couple of properties missing
+    validate()
   end
   
   def get_cf_type
@@ -42,5 +43,11 @@ class CfAsLaunchConfig
   def add_egress_rule(egress_rule)
     @egress_rules << egress_rule
   end
+
+  private
   
+  def validate
+    raise Exception.new("instance type #{@instance_type} is not supported") unless CfEc2Instance::SUPPORTED_TYPES.include?(@instance_type)
+  end
+    
 end

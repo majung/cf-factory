@@ -9,14 +9,14 @@ class CfLogging
     4
   end  
     
-  def initialize(bucket_domain, prefix)
-    @bucket = bucket_domain #mylogs.s3.amazonaws.com
+  def initialize(bucket, prefix)
+    @bucket = bucket
     @prefix = prefix
   end
   
   def get_cf_attributes
     result = {}
-    result["Bucket"] = @bucket
+    result["Bucket"] = @bucket.retrieve_attribute("DomainName")
     result["Prefix"] = @prefix
     result
   end

@@ -18,7 +18,11 @@ class CfEc2Instance
     @availability_zone = options[:availability_zone]
     validate()
   end
-  
+
+  def set_deletion_policy(deletion_policy)
+    @deletion_policy = deletion_policy
+  end
+          
   def get_cf_type
     "AWS::EC2::Instance"
   end
@@ -40,17 +44,9 @@ class CfEc2Instance
     result["AvailabilityZone"] = @availability_zone unless @availability_zone.nil?
     result
   end
-  
-  def add_ingress_rule(ingress_rule)
-    @ingress_rules << ingress_rule
-  end
-  
-  def add_egress_rule(egress_rule)
-    @egress_rules << egress_rule
-  end
-    
+
   def assign_eip
-    
+    #TODo
   end
   
   private

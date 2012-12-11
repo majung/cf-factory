@@ -8,6 +8,10 @@ module CfBase
   def get_cf_type
     raise Exception.new("must be defined")
   end
+    
+  def get_deletion_policy
+    @deletion_policy
+  end
   
   def get_cf_attributes
     result = {}
@@ -40,7 +44,10 @@ module CfBase
     @result += "    \"#{@name}\" : {\n"
     unless self.get_cf_type() == nil
       @result += "      \"Type\" : \"#{self.get_cf_type()}\",\n"
-    end    
+    end
+    unless self.get_deletion_policy() == nil
+      @result += "      \"DeletionPolicy\" : \"#{self.get_deletion_policy()}\",\n"
+    end            
     attributes = self.get_cf_attributes    
     attributes.keys.each() {|key|
       value = attributes[key]

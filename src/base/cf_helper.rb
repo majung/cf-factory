@@ -37,7 +37,7 @@ class CfHelper
   end
   
   def self.base64(string)
-    base = "{ \"Fn::Base64\": #{string} }"
+    base = "{ \"Fn::Base64\": \"#{string}\" }"
     return clean(base)
   end
   
@@ -58,7 +58,16 @@ class CfHelper
   end
   
   def self.az_in_region(az_id = "a", region = "")
-    join([ref_current_region(), 'a'])
+    clean(join([ref_current_region(), az_id]))
+  end
+  
+  def self.az_array_in_region(az_ids = ["b","c"], region = "")
+    result = "["
+    az_ids.each() {|az_id|
+      result += CfHelper.az_in_region(az_id)+", "
+    }
+    result = result.chomp(" ").chomp(",")
+    result += "]"
   end
   
   def self.print_array(array)

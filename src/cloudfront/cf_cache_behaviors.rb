@@ -1,16 +1,12 @@
 require 'base/cf_inner'
 
-class CfDefaultCacheBehavior
+class CfDefaultCacheBehaviors
   include CfInner
       
   def additional_indent
     4
-  end
-  
-  def self.create_basic(target_origin_id)
-    CfDefaultCacheBehavior.new(target_origin_id,CfForwardedValues.new(true),"allow-all")
-  end
-      
+  end  
+   
   def initialize(target_origin_id, forwarded_values, viewer_protocol_policy, options = {})
     @target_origin_id = target_origin_id
     @forwarded_values = forwarded_values

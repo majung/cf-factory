@@ -1,6 +1,7 @@
 require 'base/cf_inner'
 
 class CfCustomOriginConfig
+  PROTOCOL_VALUES = ["http-only","match-viewer"]
   include CfInner
       
   def additional_indent
@@ -12,6 +13,7 @@ class CfCustomOriginConfig
     @protocol = protocol
     @http_port = options[:http_port]  
     @https_port = options[:https_port]
+    validate()
   end
   
   def get_cf_attributes
@@ -25,5 +27,11 @@ class CfCustomOriginConfig
   def is_custom?
     true
   end
-    
+   
+  private
+  
+  def validate
+    raise Exception.new("protocol must be within #{PROTOCOL_VALUES}") unless PROTOCOL_VALUES.include?(@protocol)
+  end
+   
 end
