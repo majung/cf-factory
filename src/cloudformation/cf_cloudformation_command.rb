@@ -12,11 +12,11 @@ class CfCloudFormationCommand
   def initialize(name, command, options = {})
     @name = name
     @command = command
+      #
     @env = options[:env]
     @cwd = options[:cwd]
     @test = options[:test]
     @ignore_errors = options[:ignore_errors]
-      #
     @additional_indent = 6
   end  
       
@@ -26,11 +26,11 @@ class CfCloudFormationCommand
     
   def get_cf_attributes
     result = {} 
-    result["command"] = @command
-    result["env"] = @env unless @env.nil?
-    result["cwd"] = @cwd unless @cwd.nil?      
-    result["test"] = @test unless @test.nil?      
-    result["ignore_errors"] = @ignore_errors unless @ignore_errors.nil?      
+    result['command'] = @command
+    result['env'] = @env unless @env.nil?
+    result['cwd'] = @cwd unless @cwd.nil?
+    result['test'] = @test unless @test.nil?
+    result['ignoreErrors'] = @ignore_errors unless @ignore_errors.nil?
     result
   end
       

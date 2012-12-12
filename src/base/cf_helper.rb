@@ -46,7 +46,7 @@ class CfHelper
   end
   
   def self.clean(string)
-    string.gsub(/\"{/,"{").gsub(/\"}/,"}").gsub(/}\"/,"}").gsub(/\"\[/,"[").gsub(/\"\]/,"]").gsub(/\\/,"")
+    string.gsub(/\"{/,"{").gsub(/\"}/,"}").gsub(/}\"/,"}").gsub(/\"\[/,"[").gsub(/\"\]/,"]")#.gsub(/\\/,"") #TODO: the last gsub invalidated line-breaks
   end
   
   def self.availability_zones(string = "")
@@ -73,13 +73,19 @@ class CfHelper
   def self.print_array(array)
     inner = ""
     array.each() {|element|
-      inner += "\"#{element}\" ,"
+      if element == "\n"
+        inner += "\"\\n\" ,"
+      else
+        inner += "\"#{element}\" ,"
+      end
     }
     inner.chomp!(",")
     result = "[ #{inner} ]"
     #result = array.inspect
-    #puts "rsult = #{result.inspect}"    
-    clean(result)
+    #puts "rsult before CLEAN = #{result}"    
+    res = clean(result)
+    #puts "rsult after CLEAN = #{res}"
+    res
   end
   
 end

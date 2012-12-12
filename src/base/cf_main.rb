@@ -7,7 +7,14 @@ class CfMain
     @outputs = []
     @resources = []
   end
-    
+  
+  # Go through all resources and tag them with the specified array of tags.
+  def apply_tags_to_all_resources(tag_list)
+    @resources.each() {|resource|
+      resource.set_tags(tag_list)
+    }
+  end
+  
   def add_vpc(vpc)
     @resources << vpc
   end

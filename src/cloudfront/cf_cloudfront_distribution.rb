@@ -8,6 +8,10 @@ class CfCloudfrontDistribution
     @distribution = distribution_details
   end
   
+  def set_tags(tag_list)
+    @tag_list = tag_list 
+  end
+    
   def self.create_s3_distribution(name, s3_bucket, origin_options = {}, cache_behaviour_options = {}, distribution_options = {})
     s3_origin = CfS3OriginConfig.new
     origin_config = CfOrigin.new(s3_bucket.short_domain_name(),s3_bucket.generate_ref,s3_origin, origin_options)

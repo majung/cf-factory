@@ -21,6 +21,17 @@ class CfAsGroup
     validate()
   end
   
+  def set_tags(tag_list)
+    @tag_list = []
+    tag_list.each() {|tg|
+      tg2 = tg.clone
+      tg2.set_propagate_at_launch(true)
+      puts ">>>>>>>>>>>>>>>>>>>>> "+tg2.inspect
+      @tag_list << tg2
+    }
+    @tag_list
+  end
+    
   def validate
     if @max_size < @min_size
       raise Exception.new("max size (#{@max_size}) must be equal or larger min size (#{@min_size})")

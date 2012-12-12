@@ -9,6 +9,22 @@ module CfInner
     0
   end
   
+  def generate_name()
+    indent = " "*additional_indent()
+    @result = "#{indent}"
+    @result += "#{indent}{\n"
+    attributes = self.get_cf_attributes
+    @result += "#{indent}          \"#{@name}\" : {\n"
+    attributes.keys.each() {|key|
+      value = attributes[key]
+      @result += "#{indent}            \"#{key}\" : #{set_quotes(value)},\n"
+    }
+    #
+    @result = @result.chomp.chomp(",")
+    @result += "\n#{indent}      }"
+    @result += "\n#{indent}        }"
+  end
+  
   def generate()
     indent = " "*additional_indent()
     @result = "#{indent}"
@@ -21,7 +37,7 @@ module CfInner
     #
     @result = @result.chomp.chomp(",")
     @result += "\n#{indent}        }"
-  end
+  end  
   
   # Sets leading and trailing quotes
   def set_quotes(value)

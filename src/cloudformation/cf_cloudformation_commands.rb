@@ -18,7 +18,7 @@ class CfCloudFormationCommands
     result = {} 
     @commands.each() {|command|
       result[command.get_name] = command.generate
-    }      
+    }
     result
   end
       

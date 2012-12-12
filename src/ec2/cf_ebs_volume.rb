@@ -25,6 +25,10 @@ class CfEbsVolume
     CfEbsVolume.new(name, availability_zone, {:snapshot_id => snapshot_id})
   end
   
+  def set_tags(tag_list)
+    @tag_list = tag_list 
+  end
+  
   def set_deletion_policy(deletion_policy)
     @deletion_policy = deletion_policy
   end

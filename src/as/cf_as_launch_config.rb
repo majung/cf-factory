@@ -22,7 +22,7 @@ class CfAsLaunchConfig
   end
   
   def get_cf_attributes
-    {}
+    super
   end
   
   def get_cf_properties

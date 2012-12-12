@@ -31,12 +31,12 @@ module CfBase
     CfHelper.generate_att(@name, attribute)
   end
   
-  def set_tags(tag_list)
-    @tag_list = tag_list
-  end
-
   def set_meta_data(meta_data)
     @meta_data = meta_data
+  end
+    
+  def set_tags(tag_list)
+    #should be overwritten by those resources that support tags 
   end
     
   def generate

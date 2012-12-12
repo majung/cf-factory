@@ -17,5 +17,9 @@ class CfCloudFormationInit
     }
     result
   end
-
+  
+  def generate
+    generate_name
+  end
+  
 end

@@ -84,14 +84,22 @@ role_policy = CfIamPolicy.new("MyRolePolicy", CfPolicyDocument.new([statement]))
 iam_role = CfIamRole.new("ReadMetaData","/",{:policies => [role_policy]})
 cf.add_resource(iam_role)
 
-
-
 #auto-scaling group
 launch_config = CfAsLaunchConfig.new("AppServerLaunchConfig", ami_id, "t1.micro", {:security_groups => [app_sec_group], :user_data => rds_endpoint})
 cf.add_resource(launch_config)   
 availability_zones = CfHelper.az_array_in_region(["b","c"])
 as_group = CfAsGroup.new("AppServerFleet",availability_zones, launch_config, [elb], 4 ,2 ,{:desired_capacity => 2})
 cf.add_resource(as_group)
+as_up_scaling_policy = CfAsScalingPolicy.new("MyUpscalePolicy",as_group,"ChangeInCapacity","1",{:cooldown => 300})
+cf.add_resource(as_up_scaling_policy)
+as_down_scaling_policy = CfAsScalingPolicy.new("MyDownscalePolicy",as_group,"ChangeInCapacity","-1",{:cooldown => 300})
+cf.add_resource(as_down_scaling_policy)
+as_up_alarm = CfCloudWatchAlarm.new("MyUpAlarm",CfCloudWatchAlarm::GREATER_THAN_OR_EQUAL_TO_THRESHOLD, "3", "CPUUtilization","AWS/EC2",
+  "60","Average","80", {:alarm_actions => [as_up_scaling_policy]})
+as_down_alarm = CfCloudWatchAlarm.new("MyDownAlarm",CfCloudWatchAlarm::LESS_THAN_THRESHOLD, "3", "CPUUtilization","AWS/EC2",
+  "60","Average","30", {:alarm_actions => [as_down_scaling_policy]}) 
+cf.add_resource(as_up_alarm)
+cf.add_resource(as_down_alarm)
 
 #cloudfront
 # distribution with multiple origins, one for S3, one for the ELB   
@@ -133,6 +141,6 @@ config_options["cloud_formation_endpoint"] = "cloudformation.us-east-1.amazonaws
 puts config_options.inspect
 validator = TemplateValidation.new(cf_json, config_options)
 validator.validate()
-validator.apply({"AppServerAmi" => ami_id, "AppServerKey" => "majung", "AppPort" => "80",  "MasterUserName" => "iamauser", "MasterPassword" => "abcd1234"})
+#validator.apply({"AppServerAmi" => ami_id, "AppServerKey" => "majung", "AppPort" => "80",  "MasterUserName" => "iamauser", "MasterPassword" => "abcd1234"})
 
 #puts "the reference for the VPC : #{vpc.generate_ref}"

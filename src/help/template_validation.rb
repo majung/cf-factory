@@ -21,7 +21,7 @@ class TemplateValidation
     cf = AWS::CloudFormation.new(@config_options)
     stack_name = "StackStartedFromEclipse#{Time.new.to_i}"
     puts "going to start stack #{stack_name} with parameters #{parameters.inspect}"
-    stack = cf.stacks.create(stack_name, @template_string, :parameters => parameters)
+    stack = cf.stacks.create(stack_name, @template_string, :parameters => parameters, :capabilities => ["CAPABILITY_IAM"])
     puts "started stack with parameters: #{stack.parameters}"
   end
   

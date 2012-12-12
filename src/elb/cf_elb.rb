@@ -22,6 +22,10 @@ class CfElb
     "AWS::ElasticLoadBalancing::LoadBalancer"
   end
   
+  def set_tags(tag_list)
+    @tag_list = tag_list 
+  end
+    
   def get_cf_attributes
     {}
   end
