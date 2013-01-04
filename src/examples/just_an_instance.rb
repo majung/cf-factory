@@ -1,6 +1,6 @@
 require 'help/include_libraries'
 
-cf = CfMain.new("Playground")
+cf = CfMain.new("JustAnInstance")
 ##########################
 
 mapping = CfMapping.new("Region2AmiMapping","AMI", {

@@ -73,10 +73,10 @@ cf.add_resource(rds_sec_group)
 
 #rds
 rds_endpoint= "rdsendpoint"
-#options = {:multi_az => true, :security_groups => [rds_sec_group]}
-#rds_instance = CfRdsInstance.new("MyDatabase",5,"MySql","db.t1.micro",param_db_user.generate_ref(), param_db_pw.generate_ref, options)
-#cf.add_resource(rds_instance)
-#rds_endpoint = rds_instance.retrieve_attribute("Endpoint.Address") 
+options = {:multi_az => true, :security_groups => [rds_sec_group]}
+rds_instance = CfRdsInstance.new("MyDatabase",5,"MySql","db.t1.micro",param_db_user.generate_ref(), param_db_pw.generate_ref, options)
+cf.add_resource(rds_instance)
+rds_endpoint = rds_instance.retrieve_attribute("Endpoint.Address") 
 
 #iam-role to be able to read meta-data
 statement = CfIamStatement.new("Allow","cloudformation:DescribeStackResource","*")
