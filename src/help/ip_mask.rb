@@ -5,7 +5,7 @@ class IpMask
   
   def initialize(ip_mask, bits = 32) #if one parameter specified, means it's not a range, it's one address
     @ip_mask = ip_mask
-    @bits = bits
+    @bits = bits.to_i
   end
   
   def self.create(ip_mask, bits = 32)
@@ -14,8 +14,11 @@ class IpMask
   end
   
   def self.create_from_cidr(cidr)
-    ip  = cidr.split("/")[0].split(".")
-    bits  = cidr.split("/")[1].to_i    
+    #ip  = cidr.split("/")[0].split(".")
+    #bits  = cidr.split("/")[1].to_i
+    ip = cidr.split("/")[0]
+    bits = cidr.split("/")[1]
+    IpMask.new(ip, bits)
   end
   
   def self.create_from_num(number, bits)
@@ -85,6 +88,7 @@ class IpMask
   end
   
   def divide(number_of_addresses)
+    possible_ranges = []
     bits_to_move = (Math.log(number_of_addresses+1)/Math.log(2)).to_i
     puts "asked to allocate #{number_of_addresses}; that corresponds to #{bits_to_move} bits"
     puts "#{self.free()} are free"
@@ -94,10 +98,13 @@ class IpMask
       num = self.to_num()
       num += i*number_of_addresses
       possible_range = IpMask.create_from_num(num, 32 - bits_to_move)
+      possible_ranges << possible_range
       puts "possible range: #{possible_range}"
     }
+    possible_ranges
   end  
       
+  # Takes an array of IP-Address-Numbers into account and allocates corresponding IP address ranges
   def divide_individually(array_with_number_of_addresses)
     possible_ranges = []
     num = self.to_num()
@@ -158,37 +165,3 @@ class IpMask
   end
     
 end
-
-ip = IpMask.create("192.168.0.18",16)
-ip = IpMask.create("10.0.0.0",16)
-puts "ip = #{ip.to_s}"
-
-number = ip.to_num
-new_ip = IpMask.create_from_num(number,24)
-#puts "test create from number: #{new_ip}"
-
-puts ip.to_s
-puts "free = #{ip.free}"
-puts "used = #{ip.used}"
-puts "mask: #{ip.to_mask}"
-
-#puts "divide #{ip.divide(256)}"
-address_size_array = [256,256,256,256]
-puts "== divide #{ip.divide_individually(address_size_array)}"
-address_size_array = [512,256,256]
-puts "== divide #{ip.divide_individually(address_size_array)}"
-address_size_array = [256,512,256]
-puts "== divide #{ip.divide_individually(address_size_array)}"
-address_size_array = [256,128,128,128,128,128,128,128,128,256,128,128]
-puts "== divide #{ip.divide_individually(address_size_array)}"
-address_size_array = [512,256,128,64,32,16,8]
-puts "== divide #{ip.divide_individually(address_size_array)}"
-address_size_array = [512,256,128,64,32,16,8,16,32,64,128,256,512]
-puts "== divide #{ip.divide_individually(address_size_array)}"
-address_size_array = [1024,512,256,128,256,512, 1024, 1024]
-puts "== divide #{ip.divide_individually(address_size_array)}"
-address_size_array = [16,32,64,128,256,512]
-puts "== divide #{ip.divide_individually(address_size_array)}"
-address_size_array = [256]*257
-puts "== divide #{ip.divide_individually(address_size_array)}"
-
