@@ -54,6 +54,9 @@ require 'cf_factory/elb/cf_health_check'
 require 'cf_factory/elb/cf_lb_cookie_stickiness_policy'
 require 'cf_factory/elb/cf_listener'
 
+require 'cf_factory/help/ip_mask'
+require 'cf_factory/help/template_validation'
+
 require 'cf_factory/iam/cf_iam_access_key'
 require 'cf_factory/iam/cf_iam_group'
 require 'cf_factory/iam/cf_iam_instance_profile'

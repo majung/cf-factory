@@ -1,5 +1,3 @@
-require 'aws'
-
 class IpMask
   attr_reader :bits, :ip_mask 
   
