@@ -1,4 +1,6 @@
-require 'help/include_libraries'
+#!/usr/bin/ruby
+
+require 'cf_factory'
 
 cf = CfMain.new("Playground")
 ##########################

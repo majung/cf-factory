@@ -1,4 +1,6 @@
-require 'help/include_libraries'
+#!/usr/bin/ruby
+
+require 'cf_factory'
 
 # CloudFormation template for Atraveo. 2-Tiered web-application with load-balancing.
 cf = CfMain.new("S3 Bucket with CloudFront distribution")

@@ -20,11 +20,11 @@ class CfDistributionConfig
   def get_cf_attributes
     result = {}
     result["Origins"] = CfHelper.generate_inner_array(@origins)
-    result["DefaultCacheBehavior"] = @default_cache_behaviour.generate
+    result["DefaultCacheBehavior"] = @default_cache_behaviour.generate unless @default_cache_behaviour.nil?
     result["Enabled"] = @enabled
     result["Logging"] = @logging.generate unless @logging.nil?
     result["Aliases"] = @aliases.inspect unless @aliases.nil?
-    result["CacheBehaviors"] = CfHelper.generate_inner_array(@cache_behaviors)
+    result["CacheBehaviors"] = CfHelper.generate_inner_array(@cache_behaviors) unless @cache_bahaviors.nil?
     result
   end
   
