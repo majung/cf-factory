@@ -17,9 +17,13 @@ module CfInner
     @result += "#{indent}          \"#{@name}\" : {\n"
     attributes.keys.each() {|key|
       value = attributes[key]
-      @result += "#{indent}            \"#{key}\" : #{set_quotes(value)},\n"
+      if value.method_defined? :get_cf_attributes
+        @result += "#{indent}            \"#{key}\" : #{value.get_cf_attributes},\n}"
+      else
+        @result += "#{indent}            \"#{key}\" : #{set_quotes(value)},\n"
+      end
     }
-    #
+    
     @result = @result.chomp.chomp(",")
     @result += "\n#{indent}      }"
     @result += "\n#{indent}        }"
