@@ -47,8 +47,6 @@ module CfBase
       case value.class.to_s
       when "Hash"
         output += "        \"#{key}\" : \n{#{hash_to_string(value,indent+5)}},\n"
-      when "EmbeddedProperty"
-        output += "        \"#{key}\" : \n{#{hash_to_string(value.generate,indent+5)},\n"
       else
         output += "        \"#{key}\" : #{set_quotes(value)},\n"
       end
