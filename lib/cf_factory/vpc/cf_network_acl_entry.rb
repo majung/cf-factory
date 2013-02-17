@@ -28,8 +28,9 @@ class CfNetworkAclEntry
   
   def get_cf_properties
     {"NetworkAclId" => @network_acl.generate_ref, "CidrBlock" => @cidr_block, 
-      "Protocol" => @protocol.to_i, "RuleNumber" => @rule_number.to_i, "RuleAction" => @rule_action, "Egress" => @egress
-    }#TODO: port ranges
+      "Protocol" => @protocol.to_i, "RuleNumber" => @rule_number.to_i, "RuleAction" => @rule_action, "Egress" => @egress,
+      "PortRange" => {"From" => @from_port.to_i, "To" => @to_port.to_i }
+    }
   end  
   
   

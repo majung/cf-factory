@@ -39,6 +39,23 @@ module CfBase
     #should be overwritten by those resources that support tags 
   end
     
+  def hash_to_string(hash, indent=0)
+    output = ""
+    hash.keys.each() do |key|
+      value = hash[key]
+      output += " " * indent
+      case value.class.to_s
+      when "Hash"
+        output += "        \"#{key}\" : \n{#{hash_to_string(value,indent+5)}},\n"
+      else
+        output += "        \"#{key}\" : #{set_quotes(value)},\n"
+      end
+    end
+    output
+    output = output.chomp().chomp(",")
+
+  end
+
   def generate
     @result = ""
     @result += "    \"#{@name}\" : {\n"
@@ -49,20 +66,14 @@ module CfBase
       @result += "      \"DeletionPolicy\" : \"#{self.get_deletion_policy()}\",\n"
     end            
     attributes = self.get_cf_attributes    
-    attributes.keys.each() {|key|
-      value = attributes[key]
-      @result += "      \"#{key}\" : #{set_quotes(value)},\n"
-    }
+    @result += hash_to_string(attributes)
+
     #
     properties = self.get_cf_properties
     properties["Tags"] = CfHelper.generate_inner_array(@tag_list) unless @tag_list.nil?
     unless properties.size == 0
       @result += "      \"Properties\" : {\n"
-      properties.keys.each() {|key|
-        value = properties[key]
-        @result += "        \"#{key}\" : #{set_quotes(value)},\n"
-      }  
-      @result = @result.chomp.chomp(",")
+      @result += hash_to_string(properties)
       @result += "\n      }"  
     end
     @result = @result.chomp.chomp(",")

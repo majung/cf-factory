@@ -40,12 +40,12 @@ sudo gem install ./cf_factory-x.x.x.gemspec
     network_acl_entry = CfNetworkAclEntry.new("Acl1", "110", "6", "ALLOW",  false, "0.0.0.0/0", 80, 80)
     network_acl.add_network_acl_entry(network_acl_entry)
 
-    subnet1 = CfSubnet.new("WebTier1", "10.10.0.0/24", "eu-west-1a", route_table, network_acl)
+    subnet1 = CfSubnet.new("WebTier1", "10.10.0.0/24", "us-east-1b", route_table, network_acl)
     vpc.add_subnet(subnet1)
-    subnet2 = CfSubnet.new("AppTier1", "10.10.1.0/24", "eu-west-1a", route_table, network_acl)
+    subnet2 = CfSubnet.new("AppTier1", "10.10.1.0/24", "us-east-1c", route_table, network_acl)
     vpc.add_subnet(subnet2)
-    subnet3 = CfSubnet.new("DbTier1", "10.10.2.0/24", "eu-west-1a", route_table, network_acl)
-    vpc.add_subnet(subnet2)
+    subnet3 = CfSubnet.new("DbTier1", "10.10.2.0/24", "us-east-1d", route_table, network_acl)
+    vpc.add_subnet(subnet3)
 
     ####### output parameters
     output = CfOutput.new("VpcId", "Id of the VPC", vpc.generate_ref())
@@ -54,6 +54,7 @@ sudo gem install ./cf_factory-x.x.x.gemspec
     ####### validate and instantiate stack
     cf_json = cf.generate
     puts cf_json
+
     validator = TemplateValidation.new(cf_json, {access_key_id: "ACCESS_KEY_HERE",
                                                  secret_key_id: "SECRET_KEY_HERE"})
     validator.validate()
