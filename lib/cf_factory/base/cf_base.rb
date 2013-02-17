@@ -65,9 +65,10 @@ module CfBase
     unless self.get_deletion_policy() == nil
       @result += "      \"DeletionPolicy\" : \"#{self.get_deletion_policy()}\",\n"
     end            
-    attributes = self.get_cf_attributes    
-    @result += hash_to_string(attributes)
-
+    attributes = self.get_cf_attributes  
+    unless attributes.size == 0
+      @result += "#{hash_to_string(attributes)},\n"
+    end
     #
     properties = self.get_cf_properties
     properties["Tags"] = CfHelper.generate_inner_array(@tag_list) unless @tag_list.nil?

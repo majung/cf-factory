@@ -1,4 +1,6 @@
-require 'help/include_libraries'
+#!/usr/bin/ruby
+
+require 'cf_factory'
 
 cf = CfMain.new("Playground")
 ##########################
@@ -18,6 +20,7 @@ cf.add_resource(iam_access_key)
 
 script = CfInitScript.create_basic("MyInstance",iam_access_key.generate_ref,iam_access_key.retrieve_attribute("SecretAccessKey"))
 #full_init_script = script.user_data()
+
 full_init_script = CfHelper.join([
   "#!/bin/bash -v\\n",
   "yum update -y aws-cfn-bootstrap\\n",
@@ -26,6 +29,8 @@ full_init_script = CfHelper.join([
   " --access-key ", iam_access_key.generate_ref,
   " --secret-key ", iam_access_key.retrieve_attribute("SecretAccessKey")]
 )
+
+
 
 instance = CfEc2Instance.new("MyInstance",input_ami.generate_ref,"m1.small", 
   {:keyname => input_keyname.generate_ref(),
@@ -69,4 +74,4 @@ config_options = YAML.load_file("aws_config.yml")
 config_options["cloud_formation_endpoint"] = "cloudformation.us-east-1.amazonaws.com"
 validator = TemplateValidation.new(cf_json, config_options)
 validator.validate()
-validator.apply
+

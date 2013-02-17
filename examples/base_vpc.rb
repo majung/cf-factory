@@ -1,7 +1,6 @@
 #!/usr/bin/ruby
 
-require 'help/include_libraries'
-require 'help/fixes'
+require 'cf_factory'
 
 cf = CfMain.new("Bla bla bla")
 ####### input parameters

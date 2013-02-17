@@ -42,10 +42,9 @@ class CfInitScript
       script_with_params << @parameter_array[count]
       count += 1
     }
-    puts script_with_params
-    puts script_with_params.inspect
+
     join = CfHelper.join(script_with_params)
-    puts join
+
     @user_data = join
   end
 

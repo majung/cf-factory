@@ -1,4 +1,6 @@
-require 'help/include_libraries'
+#!/usr/bin/ruby
+
+require 'cf_factory'
 
 cf = CfMain.new("Playground")
 ##########################
@@ -80,4 +82,4 @@ config_options = YAML.load_file("aws_config.yml")
 config_options["cloud_formation_endpoint"] = "cloudformation.us-east-1.amazonaws.com"
 validator = TemplateValidation.new(cf_json, config_options)
 validator.validate()
-validator.apply
+
