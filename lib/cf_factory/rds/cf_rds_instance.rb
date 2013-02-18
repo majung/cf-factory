@@ -1,6 +1,7 @@
 require 'cf_factory/base/cf_base'
 require 'cf_factory/base/cf_helper'
 
+module CfFactory
 class CfRdsInstance
   VALID_TYPES = ["db.t1.micro", "db.m1.small","db.m1.medium","db.m1.large","db.m1.xlarge","db.m2.xlarge","db.m2.2xlarge","db.m2.4xlarge"]
   include CfBase
@@ -50,4 +51,5 @@ class CfRdsInstance
     end
   end
   
+end
 end

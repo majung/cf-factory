@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_base'
 
+module CfFactory
 class CfNetworkAclEntry
   include CfBase
   
@@ -34,4 +35,5 @@ class CfNetworkAclEntry
   end  
   
   
+end
 end

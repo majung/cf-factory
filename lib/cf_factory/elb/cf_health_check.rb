@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_inner'
 
+module CfFactory
 class CfHealthCheck
   include CfInner
   
@@ -20,4 +21,5 @@ class CfHealthCheck
     }
   end
     
+end
 end

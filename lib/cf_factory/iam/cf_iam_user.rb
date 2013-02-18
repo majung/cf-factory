@@ -2,6 +2,7 @@ require 'cf_factory/base/cf_base'
 require 'cf_factory/base/cf_helper'
 require 'cf_factory/iam/cf_iam_instance_profile'
 
+module CfFactory
 class CfIamUser
   include CfBase
   
@@ -31,4 +32,5 @@ class CfIamUser
     result
   end
   
+end
 end

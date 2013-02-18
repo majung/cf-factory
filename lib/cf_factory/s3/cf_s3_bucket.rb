@@ -1,4 +1,5 @@
 require 'cf_factory/base/cf_base'
+module CfFactory
 class CfS3Bucket
   include CfBase  
   
@@ -29,4 +30,5 @@ class CfS3Bucket
     CfHelper.join([self.generate_ref, ".s3.amazonaws.com"])
   end
   
+end
 end

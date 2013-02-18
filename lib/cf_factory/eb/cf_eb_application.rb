@@ -1,6 +1,7 @@
 require 'cf_factory/base/cf_base'
 require 'cf_factory/base/cf_helper'
 
+module CfFactory
 class CfEbApplication
   include CfBase  
   
@@ -36,4 +37,5 @@ class CfEbApplication
   end
 
   
+end
 end

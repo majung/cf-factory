@@ -1,3 +1,4 @@
+module CfFactory
 class CfInitScript
   # Every parameter-string will be transformed into something like { "Ref" : "<parameter>" }
   def initialize(script, parameter_array)
@@ -70,4 +71,5 @@ def self.basic_script_with_update
   "
 end  
   
+end
 end

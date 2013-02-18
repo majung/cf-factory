@@ -1,6 +1,7 @@
 #not yet working
 
 require 'cf_factory/base/cf_base'
+module CfFactory
 class CfRoute53RecordSetGroup
   include CfBase  
   
@@ -39,4 +40,5 @@ class CfRoute53RecordSetGroup
     end
   end
   
+end
 end

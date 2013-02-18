@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_inner'
 
+module CfFactory
 class CfElbAliasTarget
   include CfInner
     
@@ -18,4 +19,5 @@ class CfElbAliasTarget
     result
   end
   
+end
 end

@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_inner'
 
+module CfFactory
 class CfEc2Tag
   include CfInner  
   
@@ -29,4 +30,5 @@ class CfEc2Tag
     CfEc2Tag.new(@key,@value,options)
   end
     
+end
 end

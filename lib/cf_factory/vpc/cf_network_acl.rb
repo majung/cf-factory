@@ -1,4 +1,5 @@
 require 'cf_factory/base/cf_base'
+module CfFactory
 class CfNetworkAcl
   include CfBase
   
@@ -36,4 +37,5 @@ class CfNetworkAcl
     @result
   end
   
+end
 end

@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_base'
 
+module CfFactory
 class CfRdsSubnetGroup
   include CfBase  
   
@@ -26,4 +27,5 @@ class CfRdsSubnetGroup
     @subnets << subnet
   end
   
+end
 end

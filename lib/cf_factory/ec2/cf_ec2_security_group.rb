@@ -1,4 +1,5 @@
 require 'cf_factory/base/cf_base'
+module CfFactory
 class CfEc2SecurityGroup
   include CfBase  
   
@@ -37,4 +38,5 @@ class CfEc2SecurityGroup
     @egress_rules << egress_rule
   end
   
+end
 end

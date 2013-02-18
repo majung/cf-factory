@@ -1,6 +1,7 @@
 require 'cf_factory/base/cf_base'
 require 'cf_factory/base/cf_helper'
 
+module CfFactory
 class CfCloudWatchAlarm
   include CfBase
   
@@ -55,4 +56,5 @@ class CfCloudWatchAlarm
     result
   end
     
+end
 end

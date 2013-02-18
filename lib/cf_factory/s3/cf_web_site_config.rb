@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_inner'
 
+module CfFactory
 class CfWebSiteConfig
   include CfInner
   
@@ -21,4 +22,5 @@ class CfWebSiteConfig
     result
   end
     
+end
 end

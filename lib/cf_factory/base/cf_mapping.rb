@@ -1,3 +1,4 @@
+module CfFactory
 class CfMapping
   def initialize(name, target, from_to_hash)
     @name = name
@@ -23,4 +24,5 @@ class CfMapping
   def map_from_region()
     "{\"Fn::FindInMap\" : [ \"#{@name}\", \"#{CfHelper.ref_current_region()}\", \"#{@target}\" ]}"
   end
+end
 end

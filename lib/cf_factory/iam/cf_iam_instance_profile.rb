@@ -2,6 +2,7 @@ require 'cf_factory/base/cf_base'
 require 'cf_factory/base/cf_helper'
 require 'cf_factory/elb/cf_app_cookie_stickiness_policy'
 
+module CfFactory
 class CfIamInstanceProfile
   include CfBase
   
@@ -27,4 +28,5 @@ class CfIamInstanceProfile
     result
   end
   
+end
 end

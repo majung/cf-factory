@@ -1,4 +1,5 @@
 require 'cf_factory/base/cf_base'
+module CfFactory
 class CfRecordSet
   include CfInner
   
@@ -58,4 +59,5 @@ class CfRecordSet
     end
   end
   
+end
 end

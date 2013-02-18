@@ -1,5 +1,6 @@
 require 'aws'
 
+module CfFactory
 class TemplateValidation
   def initialize(template_string, config_options)
     @template_string = template_string
@@ -25,4 +26,5 @@ class TemplateValidation
     puts "started stack with parameters: #{stack.parameters}"
   end
   
+end
 end

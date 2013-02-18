@@ -1,4 +1,5 @@
 require 'cf_factory/base/cf_base'
+module CfFactory
 class CfAttachGateway
   include CfBase
     
@@ -25,4 +26,5 @@ class CfAttachGateway
     result
   end
   
+end
 end

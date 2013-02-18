@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_inner'
 
+module CfFactory
 class CfOrigin
   include CfInner
   
@@ -37,4 +38,5 @@ class CfOrigin
     result
   end
     
+end
 end

@@ -2,6 +2,7 @@ require 'cf_factory/base/cf_base'
 require 'cf_factory/vpc/cf_route_table_association'
 require 'cf_factory/vpc/cf_network_acl_association'
 
+module CfFactory
 class CfSubnet
   include CfBase
     
@@ -45,4 +46,5 @@ class CfSubnet
     @result
   end
   
+end
 end

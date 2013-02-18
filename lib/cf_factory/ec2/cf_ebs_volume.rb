@@ -1,4 +1,5 @@
 require 'cf_factory/base/cf_base'
+module CfFactory
 class CfEbsVolume
   include CfBase  
   
@@ -51,4 +52,5 @@ class CfEbsVolume
     result
   end
   
+end
 end

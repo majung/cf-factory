@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_inner'
 
+module CfFactory
 class CfDefaultCacheBehavior
   include CfInner
       
@@ -29,4 +30,5 @@ class CfDefaultCacheBehavior
     result
   end
     
+end
 end

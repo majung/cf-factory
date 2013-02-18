@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_inner'
 
+module CfFactory
 class CfDistributionConfig
   include CfInner
   
@@ -28,4 +29,5 @@ class CfDistributionConfig
     result
   end
   
+end
 end

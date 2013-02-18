@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_base'
 
+module CfFactory
 class CfParameter
   include CfBase
   
@@ -22,4 +23,5 @@ class CfParameter
     {}
   end  
   
+end
 end

@@ -1,4 +1,5 @@
 require 'cf_factory/base/cf_base'
+module CfFactory
 class CfEc2Instance
   SUPPORTED_TYPES = ["t1.micro","m1.small","m1.medium","m1.large","m1.xlarge",
     "m2.xlarge","m2.2xlarge","m2.4xlarge","m3.xlarge","m3.2xlarge","c1.medium", "c1.xlarge",
@@ -59,4 +60,5 @@ class CfEc2Instance
     raise Exception.new("instance type not supported #{@instance_type}") unless SUPPORTED_TYPES.include?(@instance_type)    
   end
   
+end
 end

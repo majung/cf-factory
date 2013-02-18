@@ -1,4 +1,5 @@
 require 'cf_factory/base/cf_base'
+module CfFactory
 class CfRoute53RecordSet
   include CfBase  
   
@@ -58,4 +59,5 @@ class CfRoute53RecordSet
     end
   end
   
+end
 end

@@ -1,6 +1,7 @@
 require 'cf_factory/base/cf_base'
 require 'cf_factory/base/cf_helper'
 
+module CfFactory
 class CfAsGroup
   include CfBase  
   
@@ -72,4 +73,5 @@ class CfAsGroup
     @egress_rules << egress_rule
   end
   
+end
 end

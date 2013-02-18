@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_base'
 
+module CfFactory
 class CfEipAssociation
   include CfBase
     
@@ -26,4 +27,5 @@ class CfEipAssociation
     result
   end
   
+end
 end

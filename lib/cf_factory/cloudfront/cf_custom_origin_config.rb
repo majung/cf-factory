@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_inner'
 
+module CfFactory
 class CfCustomOriginConfig
   PROTOCOL_VALUES = ["http-only","match-viewer"]
   include CfInner
@@ -34,4 +35,5 @@ class CfCustomOriginConfig
     raise Exception.new("protocol must be within #{PROTOCOL_VALUES}") unless PROTOCOL_VALUES.include?(@protocol)
   end
    
+end
 end

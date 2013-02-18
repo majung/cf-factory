@@ -1,6 +1,7 @@
 require 'cf_factory/base/cf_base'
 require 'cf_factory/base/cf_inner'
 
+module CfFactory
 class CfCloudFormationSources
   include CfInner
 
@@ -27,4 +28,5 @@ class CfCloudFormationSources
     result
   end
       
+end
 end

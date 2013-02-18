@@ -2,6 +2,7 @@ require 'cf_factory/base/cf_base'
 require 'cf_factory/base/cf_inner'
 require 'cf_factory/base/cf_helper'
 
+module CfFactory
 class CfCloudFormationPackage
   include CfInner
 
@@ -31,4 +32,5 @@ class CfCloudFormationPackage
   def generate
     CfGenerator.indent(self.additional_indent, "\"#{@package_name}\" : #{@versions.inspect}")
   end
+end
 end

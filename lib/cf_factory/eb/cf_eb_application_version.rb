@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_inner'
 
+module CfFactory
 class CfEbApplicationVersion 
   include CfInner
 
@@ -19,4 +20,5 @@ class CfEbApplicationVersion
       "VersionLabel" => @version_label }
   end
 
+end
 end

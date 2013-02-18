@@ -1,6 +1,7 @@
 require 'cf_factory/base/cf_inner'
 require 'cf_factory/iam/cf_policy_document'
 
+module CfFactory
 class CfIamPolicy
   include CfInner  
   
@@ -15,4 +16,5 @@ class CfIamPolicy
     }
   end
 
+end
 end

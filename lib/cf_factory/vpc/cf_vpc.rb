@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_base'
 
+module CfFactory
 class CfVpc
   include CfBase
   
@@ -61,4 +62,5 @@ class CfVpc
     @result        
   end
   
+end
 end

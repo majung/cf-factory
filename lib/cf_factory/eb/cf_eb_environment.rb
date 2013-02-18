@@ -2,6 +2,7 @@ require 'cf_factory/base/cf_base'
 
 
 
+module CfFactory
 class CfEbEnvironment
   include CfBase
   include CfEbSolutionStack
@@ -51,3 +52,4 @@ class CfEbEnvironment
 
 end
                  
+end

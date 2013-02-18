@@ -1,6 +1,7 @@
 require 'cf_factory/base/cf_base'
 require 'cf_factory/vpc/cf_attach_gateway'
 
+module CfFactory
 class CfInternetGateway
   include CfBase
   
@@ -27,4 +28,5 @@ class CfInternetGateway
     result
   end
   
+end
 end

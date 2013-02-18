@@ -1,3 +1,4 @@
+module CfFactory
 class CfGenerator
   def initialize(indent)
     @indent = indent
@@ -15,4 +16,5 @@ class CfGenerator
     result
   end
   
+end
 end

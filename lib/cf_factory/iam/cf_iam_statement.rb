@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_inner'
 
+module CfFactory
 class CfIamStatement
   include CfInner  
   
@@ -20,4 +21,5 @@ class CfIamStatement
     4
   end
   
+end
 end

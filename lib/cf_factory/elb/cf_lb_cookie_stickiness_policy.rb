@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_inner'
 
+module CfFactory
 class CfLbCookieStickinessPolicy
   include CfInner
   
@@ -12,4 +13,5 @@ class CfLbCookieStickinessPolicy
     {"CookieExpirationPeriod" => @cookie_expiration_period, "PolicyName" => @policy_name}
   end
     
+end
 end

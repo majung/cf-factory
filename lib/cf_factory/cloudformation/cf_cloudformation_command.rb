@@ -2,6 +2,7 @@ require 'cf_factory/base/cf_base'
 require 'cf_factory/base/cf_inner'
 require 'cf_factory/base/cf_helper'
 
+module CfFactory
 class CfCloudFormationCommand
   include CfInner
 
@@ -34,4 +35,5 @@ class CfCloudFormationCommand
     result
   end
       
+end
 end

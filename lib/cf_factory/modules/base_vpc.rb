@@ -1,3 +1,4 @@
+module CfFactory
 class BaseVpc
   attr_reader :vpc, :subnets, :private_route_table, :public_route_table
   
@@ -58,4 +59,5 @@ class BaseVpc
     sum
   end
     
+end
 end

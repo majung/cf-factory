@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_base'
 
+module CfFactory
 class CfRouteTable
   include CfBase
     
@@ -38,4 +39,5 @@ class CfRouteTable
     @result
   end
   
+end
 end

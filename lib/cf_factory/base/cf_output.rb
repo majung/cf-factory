@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_base'
 
+module CfFactory
 class CfOutput
   include CfBase
   
@@ -21,4 +22,5 @@ class CfOutput
     {}
   end  
   
+end
 end

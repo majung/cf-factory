@@ -1,3 +1,4 @@
+module CfFactory
 class CfMain
   def initialize(description, version = "2010-09-09")
     @description = description
@@ -98,4 +99,5 @@ class CfMain
     @result += "\n  }\n"
   end
     
+end
 end

@@ -1,4 +1,5 @@
 require 'cf_factory/base/cf_base'
+module CfFactory
 class CfEip
   include CfBase  
   
@@ -23,4 +24,5 @@ class CfEip
     result
   end
 
+end
 end

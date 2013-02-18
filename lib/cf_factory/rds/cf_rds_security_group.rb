@@ -1,6 +1,7 @@
 require 'cf_factory/base/cf_base'
 require 'cf_factory/base/cf_helper'
 
+module CfFactory
 class CfRdsSecurityGroup
   include CfBase
   
@@ -30,4 +31,5 @@ class CfRdsSecurityGroup
     @rules << ingress_rule
   end
   
+end
 end

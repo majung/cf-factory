@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_base'
 
+module CfFactory
 class CfRouteTableAssociation
   include CfBase
     
@@ -21,4 +22,5 @@ class CfRouteTableAssociation
     {"SubnetId" => @subnet.generate_ref, "RouteTableId" => @route_table.generate_ref}
   end  
   
+end
 end

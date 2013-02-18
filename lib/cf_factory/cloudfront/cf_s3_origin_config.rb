@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_inner'
 
+module CfFactory
 class CfS3OriginConfig
   include CfInner
       
@@ -22,4 +23,5 @@ class CfS3OriginConfig
     false
   end
     
+end
 end

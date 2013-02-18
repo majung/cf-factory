@@ -1,6 +1,7 @@
 require 'cf_factory/base/cf_base'
 require 'cf_factory/base/cf_inner'
 
+module CfFactory
 class CfCloudFormationInit
   include CfInner
 
@@ -22,4 +23,5 @@ class CfCloudFormationInit
     generate_name
   end
   
+end
 end

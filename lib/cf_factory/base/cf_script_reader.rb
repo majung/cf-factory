@@ -1,4 +1,5 @@
 # Reads a file, integrates the specified arguments, and generates indented output taken specified parameters into account
+module CfFactory
 class CfScriptReader
   def initialize(file_to_read, indentation = 0)
     @file = file_to_read
@@ -29,4 +30,5 @@ class CfScriptReader
   private
   
   
+end
 end

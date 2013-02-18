@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_inner'
 
+module CfFactory
 class CfEbConfigurationTemplate
   include CfInner
   include CfEbSolutionStack
@@ -28,4 +29,5 @@ class CfEbConfigurationTemplate
     raise Exception.new("stack name not supported: #{@solution_stack_name}") unless is_valid_stack?(@solution_stack_name)
   end
 
+end
 end

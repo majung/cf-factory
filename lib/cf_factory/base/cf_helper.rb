@@ -1,3 +1,4 @@
+module CfFactory
 class CfHelper
   def self.generate_ref(cf_object_ref)
     "{ \"Ref\" : \"#{cf_object_ref}\" }"
@@ -88,4 +89,5 @@ class CfHelper
     res
   end
   
+end
 end

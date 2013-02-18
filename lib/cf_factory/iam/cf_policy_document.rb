@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_inner'
 
+module CfFactory
 class CfPolicyDocument
   include CfInner
     
@@ -16,4 +17,5 @@ class CfPolicyDocument
     @additional_indent
   end  
   
+end
 end

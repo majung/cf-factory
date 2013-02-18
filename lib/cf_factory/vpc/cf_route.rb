@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_base'
 
+module CfFactory
 class CfRoute
   include CfBase
     
@@ -40,4 +41,5 @@ class CfRoute
     {"RouteTableId" => @route_table.generate_ref, "DestinationCidrBlock" => @dest_cidr}.merge(options)
   end  
     
+end
 end

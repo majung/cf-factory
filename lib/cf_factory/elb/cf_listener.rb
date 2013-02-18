@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_inner'
 
+module CfFactory
 class CfListener
   include CfInner
   
@@ -23,4 +24,5 @@ class CfListener
     result
   end
     
+end
 end

@@ -1,6 +1,7 @@
 require 'cf_factory/base/cf_base'
 require 'cf_factory/base/cf_helper'
 
+module CfFactory
 class CfAsLaunchConfig
   include CfBase  
   
@@ -50,4 +51,5 @@ class CfAsLaunchConfig
     raise Exception.new("instance type #{@instance_type} is not supported") unless CfEc2Instance::SUPPORTED_TYPES.include?(@instance_type)
   end
     
+end
 end

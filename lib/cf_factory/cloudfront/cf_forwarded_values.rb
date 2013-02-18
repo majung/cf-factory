@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_inner'
 
+module CfFactory
 class CfForwardedValues
   include CfInner
       
@@ -22,4 +23,5 @@ class CfForwardedValues
     result
   end
     
+end
 end

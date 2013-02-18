@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_inner'
 
+module CfFactory
 class CfAppCookieStickinessPolicy
   include CfInner
   
@@ -12,4 +13,5 @@ class CfAppCookieStickinessPolicy
     {"CookieName" => @cookie_name, "PolicyName" => @policy_name}
   end
     
+end
 end

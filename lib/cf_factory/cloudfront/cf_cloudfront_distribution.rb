@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_base'
 
+module CfFactory
 class CfCloudfrontDistribution
   include CfBase  
   
@@ -61,4 +62,5 @@ class CfCloudfrontDistribution
     result
   end
   
+end
 end

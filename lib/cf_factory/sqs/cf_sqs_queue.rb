@@ -1,6 +1,7 @@
 require 'cf_factory/base/cf_base'
 require 'cf_factory/base/cf_helper'
 
+module CfFactory
 class CfSqsQueue
   include CfBase
   
@@ -23,4 +24,5 @@ class CfSqsQueue
     result
   end
   
+end
 end

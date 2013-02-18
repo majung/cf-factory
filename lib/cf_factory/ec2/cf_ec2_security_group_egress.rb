@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_inner'
 
+module CfFactory
 class CfEc2SecurityGroupEgress
   include CfInner
     
@@ -25,4 +26,5 @@ class CfEc2SecurityGroupEgress
     result
   end
   
+end
 end

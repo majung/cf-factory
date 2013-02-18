@@ -1,3 +1,4 @@
+module CfFactory
 class IpMask
   attr_reader :bits, :ip_mask 
   
@@ -162,4 +163,5 @@ class IpMask
     self.ip_mask == comp.ip_mask && self.bits == comp.bits
   end
     
+end
 end

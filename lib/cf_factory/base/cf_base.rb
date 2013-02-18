@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_helper'
 
+module CfFactory
 module CfBase
   def get_name
     @name
@@ -96,4 +97,6 @@ module CfBase
     end
   end
   
+end
+
 end

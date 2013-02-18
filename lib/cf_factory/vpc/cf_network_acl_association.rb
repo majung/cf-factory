@@ -1,5 +1,6 @@
 require 'cf_factory/base/cf_base'
 
+module CfFactory
 class CfNetworkAclAssociation
   include CfBase
     
@@ -21,4 +22,5 @@ class CfNetworkAclAssociation
     {"SubnetId" => @subnet.generate_ref, "NetworkAclId" => @network_acl.generate_ref}
   end  
   
+end
 end
