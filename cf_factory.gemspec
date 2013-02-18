@@ -6,9 +6,10 @@ Gem::Specification.new do |s|
   s.authors     = ["majung","cgorski"]
   s.email       = ["majung@amazon.com","cgorski@amazon.com"]
   s.files       = Dir['lib/**/*.rb', 'examples/**/*.rb', 'bin/**/*.rb']
-  s.executables = ['cf_factory_test']
+  s.executables = ['cf_factory']
   s.homepage    = 'https://github.com/cgorski/cf-factory'
   s.required_ruby_version = '>= 1.9.3'
   s.add_dependency('require_all','>=1.2.1')
+  s.add_dependency('rubyzip','>=0.9.9')
 
 end
