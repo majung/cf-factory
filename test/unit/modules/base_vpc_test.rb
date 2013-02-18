@@ -11,8 +11,8 @@ class BaseVpcTest < TestHelper
   end
   
   def test_test
-    cf = CfMain.new("test")
-    vpc = BaseVpc.new("Matthias","11.11.0.0/16",2,4,["eu-west-1a","eu-west-1b"])
+    cf = CfFactory::CfMain.new("test")
+    vpc = CfFactory::BaseVpc.new("Matthias","11.11.0.0/16",2,4,["eu-west-1a","eu-west-1b"])
     res = vpc.add_to_template(cf)
     puts cf.generate
     assert true

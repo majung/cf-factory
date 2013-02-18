@@ -1,7 +1,7 @@
 require 'cf_factory'
 
 class IpMaskTest < TestHelper
-  
+  include CfFactory
   def setup
     puts "setup..."
   end
