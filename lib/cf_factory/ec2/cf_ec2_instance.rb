@@ -57,7 +57,9 @@ class CfEc2Instance
   private
   
   def validate
-    raise Exception.new("instance type not supported #{@instance_type}") unless SUPPORTED_TYPES.include?(@instance_type)    
+    unless @instance_type.include?("Ref")
+      raise Exception.new("instance type not supported #{@instance_type}") unless SUPPORTED_TYPES.include?(@instance_type)      
+    end    
   end
   
 end

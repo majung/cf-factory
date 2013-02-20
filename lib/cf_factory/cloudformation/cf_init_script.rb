@@ -16,6 +16,11 @@ class CfInitScript
     CfInitScript.new(basic_script(), [stack, resource_id, access_key, secret_key])
   end
   
+  def self.create_from_text(file_path, params)
+    contents = File.open(file_path).read
+    CfInitScript.new(contents,params)
+  end
+  
   private
   
   def validate
