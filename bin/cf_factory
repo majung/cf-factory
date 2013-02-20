@@ -1,0 +1,8 @@
+#!/usr/bin/ruby
+
+require 'foo'
+
+require 'bar'
+
+
+

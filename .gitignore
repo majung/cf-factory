@@ -1,3 +1,4 @@
+*~
 *.gem
 *.rbc
 .bundle
@@ -16,9 +17,3 @@ tmp
 .yardoc
 _yardoc
 doc/
-*.yml
-.project
-.buildpath
-todo.txt
-*hidden*
-.settings
