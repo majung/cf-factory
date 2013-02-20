@@ -1,6 +1,9 @@
-*.buildpath
-*.gitignore
-*.project
+src/hidden_templates
+.buildpath
+.gitignore
+.project
+.settings
+todo.txt
 aws_config.yml
 *.gem
 *.rbc
