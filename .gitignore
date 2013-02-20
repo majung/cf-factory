@@ -1,4 +1,7 @@
-*~
+*.buildpath
+*.gitignore
+*.project
+aws_config.yml
 *.gem
 *.rbc
 .bundle
