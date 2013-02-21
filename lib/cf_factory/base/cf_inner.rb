@@ -17,7 +17,7 @@ module CfInner
     @result += "#{indent}          \"#{@name}\" : {\n"
     attributes.keys.each() {|key|
       value = attributes[key]
-      if value.method_defined? :get_cf_attributes
+      if (not (value.class.to_s == "String")) and value.method_defined? :get_cf_attributes
         @result += "#{indent}            \"#{key}\" : #{value.get_cf_attributes},\n}"
       else
         @result += "#{indent}            \"#{key}\" : #{set_quotes(value)},\n"
