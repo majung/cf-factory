@@ -73,7 +73,10 @@ module CfBase
       @result += "      \"DeletionPolicy\" : \"#{self.get_deletion_policy()}\",\n"
     end            
     unless self.get_update_policy() == nil
-      @result += "      \"UpdatePolicy\" : #{self.get_update_policy.generate()}\n"
+      self.get_update_policy.set_indent(8)
+      @result += "      \"UpdatePolicy\" : {\n"
+      @result += "#{self.get_update_policy.generate()}\n"
+      @result += "      },\n"
     end
     attributes = self.get_cf_attributes  
     unless attributes.size == 0

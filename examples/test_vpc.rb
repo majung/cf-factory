@@ -47,9 +47,8 @@ vpc.add_subnet(subnet3)
 #puts elb.get_cf_properties()
 
 ####### output parameters
-output = CfFactory::CfOutput.new("VPC_ID", "Id of the VPC", vpc.generate_ref())
+output = CfFactory::CfOutput.new("VpcId", "Id of the VPC", vpc.generate_ref())
 cf.add_output(output)
-
 
 cf_json = cf.generate
 puts cf_json

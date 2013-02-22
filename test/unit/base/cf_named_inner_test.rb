@@ -12,30 +12,41 @@ class CfNamedInnerTest < CfFactory::TestHelper
   end
   
   def test_instantiate
-    obj = DummyBase.new("NameGiven", "att1-value",'att2-value')
+    obj = DummyNamedInner.new("NameGiven", "43",'ABC')
   end
   
-  def test_generate
-    obj = DummyBase.new("NameGiven", "att1-value",'att2-value')
+  def test_generate_simple
+    obj = DummyNamedInner.new("NameGiven", "43",'ABC')
     res = obj.generate
-    exp = 
-    '    "NameGiven" : {
-      "Type" : "AWS::Test::Dummy",
-      "Properties" : {
-        "Attribute1" : "att1-value",
-        "Attribute2" : "att2-value"
-      }
-    },
-'
-    puts exp.inspect
-    puts res.inspect
-    assert_equal exp, res
+    puts res
+    puts "inspected: #{res.inspect}" 
+    assert_equal obj.expected_1, res
   end
+  
+  def test_generate_indent
+    obj = DummyNamedInner.new("NameGiven", "43",'ABC')
+    obj.set_indent(10)
+    res = obj.generate
+    puts res
+    puts "inspected: #{res.inspect}" 
+    assert_equal obj.expected_2, res
+  end
+  
+  def test_generate_recursive
+    sub_obj = DummyNamedInner.new("InnerObject", "att1-value",'att2-value')
+    sub_obj.set_indent(8)
+    obj = DummyNamedInner.new("OuterObject", "att3-value",sub_obj)
+    res = obj.generate
+    puts res
+    puts "inspected: #{res.inspect}"
+    puts "expected : #{obj.expected_3.inspect}" 
+    assert_equal obj.expected_3, res
+  end      
   
   #########
     
   class DummyNamedInner
-    include CfFactory::CfNamedInner
+    include CfNamedInner
     
     def initialize(name, att1, att2)
       @name = name
@@ -48,16 +59,41 @@ class CfNamedInnerTest < CfFactory::TestHelper
     end
     
     def get_cf_attributes
-      {} #"TestAttribute" => "43"}
+      {
+        "Attribute1" => @att1,
+        "Attribute2" => @att2
+      }
     end
     
     def get_cf_properties
-      result = {}
-      result["Attribute1"] = @att1
-      result["Attribute2"] = @att2
-      result
+      {}
     end
 
+    def expected_1
+'"NameGiven" : {
+     "Attribute1" : "43",
+     "Attribute2" : "ABC"
+}'
+    end
+
+    def expected_2
+'          "NameGiven" : {
+               "Attribute1" : "43",
+               "Attribute2" : "ABC"
+          }'
+    end    
+     
+    def expected_3
+'"OuterObject" : {
+     "Attribute1" : "att3-value",
+     "Attribute2" : { 
+        "InnerObject" : {
+             "Attribute1" : "att1-value",
+             "Attribute2" : "att2-value"
+        }
+}'
+    end
+       
   end
   
 end
