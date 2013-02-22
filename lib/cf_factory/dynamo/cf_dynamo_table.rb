@@ -9,6 +9,8 @@ class CfDynamoTable
     @hash_key_type = hash_key_type
     @range_key_name = range_key_name
     @range_key_type = range_key_type
+    @read_capacity_units = read_capacity_units
+    @write_capacity_units = write_capacity_units
   end
 
   def set_deletion_policy(deletion_policy)
@@ -35,6 +37,7 @@ class CfDynamoTable
         "HashKeyElement" => { "AttributeName" => @hash_key_name, "AttributeType" => @hash_key_type }
       }
     end
+    result["ProvisionedThroughput"] = { "ReadCapacityUnits" => @read_capacity_units, "WriteCapacityUnits" => @write_capacity_units }
     result
   end
     
