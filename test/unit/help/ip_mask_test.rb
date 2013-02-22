@@ -1,6 +1,7 @@
 require 'cf_factory'
+require './test/test_cf_factory.rb'
 
-class IpMaskTest < TestHelper
+class IpMaskTest < CfFactory::TestHelper
   include CfFactory
   def setup
     puts "setup..."

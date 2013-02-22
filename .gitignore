@@ -12,6 +12,7 @@ aws_config.yml
 coverage
 InstalledFiles
 lib/bundler/man
+hidden_examples
 pkg
 rdoc
 spec/reports

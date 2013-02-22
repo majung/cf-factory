@@ -1,6 +1,7 @@
 require 'cf_factory'
+require './test/test_cf_factory.rb'
 
-class CfScriptReaderTest < TestHelper
+class CfScriptReaderTest < CfFactory::TestHelper
   
   def setup
     puts "setup..."

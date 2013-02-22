@@ -27,10 +27,13 @@ class CfAsGroup
     tag_list.each() {|tg|
       tg2 = tg.clone
       tg2.set_propagate_at_launch(true)
-      puts ">>>>>>>>>>>>>>>>>>>>> "+tg2.inspect
       @tag_list << tg2
     }
     @tag_list
+  end
+  
+  def set_update_policy(update_policy)
+    @update_policy = update_policy
   end
     
   def validate

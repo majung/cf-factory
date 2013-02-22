@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'cf_factory'
-  s.version     = '0.0.3'
+  s.version     = '0.0.4'
   s.summary     = "CloudFormation template generator"
   s.description = "Cf-factory is a Ruby library to generate CloudFormation templates."
   s.authors     = ["majung","cgorski"]

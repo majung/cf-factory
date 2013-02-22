@@ -13,7 +13,11 @@ module CfBase
   def get_deletion_policy
     @deletion_policy
   end
-  
+
+  def get_update_policy
+    @update_policy
+  end
+      
   def get_cf_attributes
     result = {}
     result["Metadata"] = @meta_data.generate unless @meta_data.nil?
@@ -68,6 +72,9 @@ module CfBase
     unless self.get_deletion_policy() == nil
       @result += "      \"DeletionPolicy\" : \"#{self.get_deletion_policy()}\",\n"
     end            
+    unless self.get_update_policy() == nil
+      @result += "      \"UpdatePolicy\" : #{self.get_update_policy.generate()}\n"
+    end
     attributes = self.get_cf_attributes  
     unless attributes.size == 0
       @result += "#{hash_to_string(attributes)},\n"
