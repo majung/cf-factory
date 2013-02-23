@@ -32,21 +32,22 @@ class CfEbEnvironment
   end
 
   def get_cf_properties
-    {
-      "ApplicationName" => @application_name,
-      "CNAMEPrefix" => @cname_prefix,
-      "Description" => @description,
-      "OptionSettings" => @option_settings,
-      "OptionsToRemove" => @options_to_remove,
-      "SolutionStackName" => SUPPORTED_STACK_NAMES[@solution_stack_name],
-      "TemplateName" => @template_name,
-      "VersionLabel" => @version_label
-    }      
-
+    result = {}
+    result["ApplicationName"] = @application_name
+    result["Description"] = @description
+    result["TemplateName"] = @template_name
+    result["VersionLabel"] = @version_label
+    result["SolutionStackName"] = SUPPORTED_STACK_NAMES[@solution_stack_name] unless @solution_stack_name.nil?
+    result["CNAMEPrefix"] = @cname_prefix unless @cname_prefix.nil?
+    result["OptionSettings"] = @option_settings unless @option_settings.nil?
+    result["OptionsToRemove"] = @options_to_remove unless @options_to_remove.nil?
+    result
   end
 
   def validate
-    raise Exception.new("stack name not supported: #{@solution_stack_name}") unless is_valid_stack?(@solution_stack_name)
+    if not @solution_stack_name.nil?
+      raise Exception.new("stack name not supported: #{@solution_stack_name}") unless is_valid_stack?(@solution_stack_name)
+    end
   end
 
 
