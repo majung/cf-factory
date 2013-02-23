@@ -15,15 +15,18 @@ class CfEbConfigurationTemplate
   def get_cf_attributes
     { "TemplateName" => @template_name,
       "Description" => @description,
-      "OptionSettings" => (option_settings.map {|opt| opt.generate}).join(','),
-      "SolutionStackName" => @solution_stack_name
+      "OptionSettings" => "[" + (@option_settings.map {|opt| opt.generate}).join(',') + "]",
+      "SolutionStackName" => SUPPORTED_STACK_NAMES[@solution_stack_name] 
     }
+  end
+
+  def generate_ref
+    "{ \"Ref\" : \"#{@template_name}\" }"
   end
 
   def get_template_name
     @template_name
   end
-
 
   def validate
     raise Exception.new("stack name not supported: #{@solution_stack_name}") unless is_valid_stack?(@solution_stack_name)
