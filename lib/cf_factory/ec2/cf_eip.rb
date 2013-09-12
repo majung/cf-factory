@@ -8,7 +8,7 @@ class CfEip
     @instance = instance
     @domain = is_vpc ? "vpc" : nil
   end
-  
+      
   def get_cf_type
     "AWS::EC2::EIP"
   end

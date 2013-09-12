@@ -17,6 +17,7 @@ class CfEc2Instance
     @source_dest_check = options[:source_dest_check]
     @user_data = options[:user_data]
     @availability_zone = options[:availability_zone]
+    @network_interfaces = options[:network_interfaces]
     validate()
   end
 
@@ -47,6 +48,15 @@ class CfEc2Instance
     result["SourceDestCheck"] = @source_dest_check unless @source_dest_check.nil?
     result["UserData"] = CfHelper.base64(@user_data) unless @user_data.nil? 
     result["AvailabilityZone"] = @availability_zone unless @availability_zone.nil?
+    if !@network_interfaces.nil? && @network_interfaces.size > 0
+      nics = []
+      index = 0
+      @network_interfaces.each() {|nic|
+        nics << CfFactory::CfInnerNetworkInterface.new(nic, index)
+        index += 1
+      }
+      result["NetworkInterfaces"] = CfHelper.generate_inner_array(nics)
+    end
     result
   end
 
@@ -60,6 +70,10 @@ class CfEc2Instance
     unless @instance_type.include?("Ref")
       raise Exception.new("instance type not supported #{@instance_type}") unless SUPPORTED_TYPES.include?(@instance_type)      
     end    
+    unless @network_interfaces.nil?
+      raise Exception.new("no security group allowed when ENI specified") unless @security_groups.nil?
+      raise Exception.new("no subnet allowed when ENI specified") unless @subnet.nil?
+    end
   end
   
 end
